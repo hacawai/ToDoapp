@@ -39,9 +39,9 @@ export class ListComponent implements OnInit {
     const index = this.list.indexOf(task);
     this.list.splice(index, 1);
   }
-  public removeAll(task: Task){
-    const index = this.list.indexOf(task);
-    this.list.splice(index, index);
+  public removeAll(){
+ 
+    this.list.splice(0, this.list.length);
   }
  public MarkAsCompleted(task:Task){
    alert('Oznaczono zadanie jako wykonane')
@@ -54,4 +54,11 @@ public onKeyDownEvent(event: KeyboardEvent){
         }
 }
 
+public removeCompletedTask(){
+  for(let task of this.list){
+      if(task.isCompleted === true){
+        this.remove(task);  
+      }
+  }
+}
 }
